@@ -1,6 +1,4 @@
 #include "String.h"
-#include <string.h>
-#include <cctype>
 #include <iostream>
 
 String::String(const char* string)
