@@ -1,5 +1,5 @@
-#include <iostream>
-#include <string> //neccesary header for string operation
+//#include <iostream>
+//#include <string> //neccesary header for string operation
 
 ////Fibonacci Sequence
 //int fibCalc(int index);
@@ -129,31 +129,38 @@
 //	return 0;
 //}
 
-/*
- 1.Write a C++ program to implement a class called Circle that has private member variables for radius. 
- Include member functions to calculate the circle's area and circumference.
+#include <iostream>
+#include "Circle.h"
+#include <string>
+extern const float PI = 3.142f;
 
- 2. Write a C++ program to create a class called Rectangle that has private member variables for length and width. 
- Implement member functions to calculate the rectangle's area and perimeter.
+int main()
+{
+	Circle circle1 = {};
 
- 3. Write a C++ program to create a class called Person that has private member variables for name, age and country. 
- Implement member functions to set and get the values of these variables.
+	Circle circle2;
 
- 4. Write a C++ program to create a class called Car that has private member variables for company, model, and year. 
- Implement member functions to get and set these variables.
+	Circle circle3;
 
- 5. Write a C++ program to implement a class called BankAccount that has private member variables for account number and balance. 
- Include member functions to deposit and withdraw money from the account.
+	std::cout << circle1.GetRadius() << std::endl;
 
- 6. Write a C++ program to create a class called Triangle that has private member variables for the lengths of its three sides. 
- Implement member functions to determine if the triangle is equilateral, isosceles, or scalene.
+	circle1.SetRadius(3.141f);
 
- 7. Write a C++ program to implement a class called Employee that has private member variables for name, employee ID, and salary. 
- Include member functions to calculate and set salary based on employee performance.
+	circle2.SetRadius(100.f);
 
- 8. Write a C++ program to implement a class called Date that has private member variables for day, month, and year. 
- Include member functions to set and get these variables, as well as to validate if the date is valid.
+	circle3.SetRadius(circle2.GetRadius() - circle1.GetRadius());
 
- 9. Write a C++ program to implement a class called Student that has private member variables for name, class, roll number, and marks. 
- Include member functions to calculate the grade based on the marks and display the student's information.
-*/
+	std::cout << "Circle 1 Radius = " << circle1.GetRadius() << std::endl;
+	
+	std::cout << "Circle 2 Radius = " << circle2.GetRadius() << std::endl;
+
+	std::cout << "Circle 3 Radius = " << circle3.GetRadius() << std::endl;
+
+	std::cout << "Area = " << circle1.GetArea() << std::endl;
+
+	std::cout << "Circumference = " << circle1.GetCircumference() << std::endl;
+
+	std::string string1 = "Hello I am a string";
+
+	std::cout << string1 << std::endl;
+}
