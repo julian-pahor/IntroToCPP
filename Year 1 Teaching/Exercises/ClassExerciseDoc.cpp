@@ -216,51 +216,135 @@
 //	return 0;
 //}
 
-// ---- EXERCISES ON CLASSES -----
-#include "Person.h"
-#include "Employee.h"
-#include "Date.h"
+//// ---- EXERCISES ON CLASSES -----
+//#include "Person.h"
+//#include "Employee.h"
+//#include "Date.h"
+//#include <string>
+//
+//
+//int main()
+//{
+//	Person p;
+//	Person p2;
+//	Person p3;
+//
+//	p.SetAge(20);
+//	p.SetName("Person 1");
+//	p.SetCountry("Place 1");
+//
+//	p2.SetAge(200);
+//	p2.SetName("Person 2");
+//	p2.SetCountry("Place 2");
+//
+//	p3.SetAge(20);
+//	p3.SetName("Person 3");
+//	p3.SetCountry("Place 3");
+//
+//	std::cout << p.GetName() << " is from " << p.GetCountry() << " and is " << p.GetAge() << " years old." << std::endl;
+//	std::cout << p2.GetName() << " is from " << p2.GetCountry() << " and is " << p2.GetAge() << " years old." << std::endl;
+//	std::cout << p3.GetName() << " is from " << p3.GetCountry() << " and is " << p3.GetAge() << " years old." << std::endl;
+//
+//	Employee jeff;
+//	Employee geff;
+//	Employee zeff;
+//	jeff.SetSalary(Employee::WorkGrade::Amazing);
+//	geff.SetSalary(Employee::WorkGrade::Poor);
+//	zeff.SetSalary(Employee::WorkGrade::Fair);
+//	std::cout << "Jeff's performance based salary is: " << jeff.GetSalary() << std::endl;
+//	std::cout << "Geff's performance based salary is: " << geff.GetSalary() << std::endl;
+//	std::cout << "Zeff's performance based salary is: " << zeff.GetSalary() << std::endl;
+//
+//	Date date;
+//	Date date2;
+//
+//	date.SetDate(18, 12, 2015);
+//	date2.SetDate(29, 2, 2020); //Should be Invalid
+//	
+//	std::cout << "Date 1 is set to " << "Day: " << date.GetDay() << " Month: " << date.GetMonth() << " Year: " << date.GetYear() << std::endl;
+//	std::cout << "Date 2 is set to " << "Day: " << date2.GetDay() << " Month: " << date2.GetMonth() << " Year: " << date2.GetYear() << std::endl;
+//
+//	return 0;
+//}
+
 #include <string>
-
-
+#include <cstdlib> //used for std::rand();
 int main()
 {
-	Person p;
-	Person p2;
-	Person p3;
+    //3x3
+    int intArray[3][3];
 
-	p.SetAge(20);
-	p.SetName("Person 1");
-	p.SetCountry("Place 1");
+    for (int i = 0; i < 3; i++) //rows
+    {
+        for (int j = 0; j < 3; j++) //columns
+        {
+            intArray[i][j] = j + (i * 3) + 1;
+        }
+    }
 
-	p2.SetAge(200);
-	p2.SetName("Person 2");
-	p2.SetCountry("Place 2");
+    for (int i = 0; i < 3; i++) //rows 
+    {
+        for (int j = 0; j < 3; j++) //columns
+        {
+            std::cout << "|" << intArray[i][j] << "|";
+        }
+        std::cout << std::endl;
+    }
 
-	p3.SetAge(20);
-	p3.SetName("Person 3");
-	p3.SetCountry("Place 3");
+    //DAYS
+    int days[29][5];
+    
+    //fill values
+    for (int i = 0; i < 29; i++) //rows
+    {
+        for (int j = 0; j < 5; j++) //columns
+        {
+            days[i][j] = (std::rand() % 50) + 1; //Weighted random values of 1-50
+        }
+    }
 
-	std::cout << p.GetName() << " is from " << p.GetCountry() << " and is " << p.GetAge() << " years old." << std::endl;
-	std::cout << p2.GetName() << " is from " << p2.GetCountry() << " and is " << p2.GetAge() << " years old." << std::endl;
-	std::cout << p3.GetName() << " is from " << p3.GetCountry() << " and is " << p3.GetAge() << " years old." << std::endl;
+    //show values
+    for (int i = 0; i < 29; i++) //rows 
+    {
+        for (int j = 0; j < 5; j++) //columns
+        {
+            std::cout << "|" << days[i][j] << "|";
+        }
+        std::cout << std::endl;
+    }
 
-	Employee jeff;
-	Employee geff;
-	Employee zeff;
-	jeff.SetSalary(Employee::WorkGrade::Amazing);
-	geff.SetSalary(Employee::WorkGrade::Poor);
-	zeff.SetSalary(Employee::WorkGrade::Fair);
-	std::cout << "Jeff's performance based salary is: " << jeff.GetSalary() << std::endl;
-	std::cout << "Geff's performance based salary is: " << geff.GetSalary() << std::endl;
-	std::cout << "Zeff's performance based salary is: " << zeff.GetSalary() << std::endl;
+    int rowValue = 0;
+    //show row sums
+    for (int i = 0; i < 29; i++) //rows 
+    {
+        for (int j = 0; j < 5; j++) //columns
+        {
+            rowValue += days[i][j];
+        }
+        std::cout << "Row " << i << " has the sum of " << rowValue << std::endl;
+        rowValue = 0;
+    }
 
-	Date date;
-	Date date2;
+    int columnValue = 0;
+    //show column sums
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 29; j++)
+        {
+            columnValue += days[j][i];
+        }
 
-	date.SetDate(18, 12, 2015);
-	date2.SetDate(29, 2, 2020); //Should be Invalid
-	
-	std::cout << "Date 1 is set to " << "Day: " << date.GetDay() << " Month: " << date.GetMonth() << " Year: " << date.GetYear() << std::endl;
-	std::cout << "Date 2 is set to " << "Day: " << date2.GetDay() << " Month: " << date2.GetMonth() << " Year: " << date2.GetYear() << std::endl;
+        std::cout << "Column " << i << " has the sum of " << columnValue << std::endl;
+        columnValue = 0;
+    }
+
+    
 }
+
+//Exercises on Arrays
+
+
+//*++ptr: Increment the pointerand get the value at the new location.
+//++* ptr : Increment the value at the current locationand assign it.
+//* ptr++ : Get the value at the current locationand then increment the pointer.
+//* ptr : Get the value at the current location without modifying the pointer.
