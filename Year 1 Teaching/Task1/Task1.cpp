@@ -133,4 +133,10 @@ int main()
     string3.WriteToConsole();
 
     std::cout << "Hello World!\n";
+
+    for (int i = 0; i < string3.Length(); i++)
+    {
+        char thisChar = string3[i];
+        std::cout << string3[i] << std::endl;
+    }
 }

@@ -12,7 +12,15 @@ string Person::GetName()
 
 void Person::SetAge(int i)
 {
-	m_age = i;
+	if (i > 100)
+	{
+		m_age = 100;
+	}
+	else
+	{
+		m_age = i;
+	}
+	
 }
 
 int Person::GetAge()

@@ -215,16 +215,24 @@
 //
 //	return 0;
 //}
-
-//// ---- EXERCISES ON CLASSES -----
+//
+// ---- EXERCISES ON CLASSES -----
+//#include "Circle.h"
 //#include "Person.h"
 //#include "Employee.h"
 //#include "Date.h"
+//#include "Player.h"
 //#include <string>
 //
 //
 //int main()
 //{
+//	Player player1;
+//	const int MAX_ARRAY_SIZE = 5;
+//	int intArray[MAX_ARRAY_SIZE];
+//
+//	std::cout << "Player 1 " << player1.X << " " << player1.Y << std::endl;
+//
 //	Person p;
 //	Person p2;
 //	Person p3;
@@ -267,79 +275,182 @@
 //	return 0;
 //}
 
-#include <string>
-#include <cstdlib> //used for std::rand();
+//class TileMap
+//{
+//public:
+//    struct Tile { int x, y; int tile_value; };
+//
+//    TileMap(int a_width, int a_height)
+//    {
+//        width = a_width;
+//        height = a_height;
+//
+//        tiles = new Tile* [height]; //Create an array that can hold Tile arrays
+//
+//        for (int row_index = 0; row_index < height; ++row_index)
+//        {
+//            tiles[row_index] = new Tile[width]; //Creatin tile arrays for each space in "tiles"
+//        }
+//    }
+//    ~TileMap()
+//    {
+//        for (int i = 0; i < height; ++i)
+//        {
+//            delete[] tiles[i];
+//        }
+//
+//        delete[] tiles;
+//    }
+//        // implement this
+//
+//    int width;
+//    int height;
+//    Tile** tiles;
+//};
+//
+//#include <string>
+//#include <cstdlib> //used for std::rand();
+//int main()
+//{
+//    ////3x3 -- Exercise 6 Arrays
+//    //int intArray[3][3]; 
+//
+//    //for (int i = 0; i < 3; i++) //rows
+//    //{
+//    //    for (int j = 0; j < 3; j++) //columns
+//    //    {
+//    //        intArray[i][j] = j + (i * 3) + 1;
+//    //    }
+//    //}
+//
+//    //for (int i = 0; i < 3; i++) //rows 
+//    //{
+//    //    for (int j = 0; j < 3; j++) //columns
+//    //    {
+//    //        std::cout << "|" << intArray[i][j] << "|";
+//    //    }
+//    //    std::cout << std::endl;
+//    //}
+//
+//    ////DAYS
+//    //int days[29][5];
+//    //
+//    ////fill values
+//    //for (int i = 0; i < 29; i++) //rows
+//    //{
+//    //    for (int j = 0; j < 5; j++) //columns
+//    //    {
+//    //        days[i][j] = (std::rand() % 50) + 1; //Weighted random values of 1-50
+//    //    }
+//    //}
+//
+//    ////show values
+//    //for (int i = 0; i < 29; i++) //rows 
+//    //{
+//    //    for (int j = 0; j < 5; j++) //columns
+//    //    {
+//    //        std::cout << "|" << days[i][j] << "|";
+//    //    }
+//    //    std::cout << std::endl;
+//    //}
+//
+//    //int rowValue = 0;
+//    ////show row sums
+//    //for (int i = 0; i < 29; i++) //rows 
+//    //{
+//    //    for (int j = 0; j < 5; j++) //columns
+//    //    {
+//    //        rowValue += days[i][j];
+//    //    }
+//    //    std::cout << "Row " << i << " has the sum of " << rowValue << std::endl;
+//    //    rowValue = 0;
+//    //}
+//
+//    //int columnValue = 0;
+//    ////show column sums
+//    //for (int i = 0; i < 5; i++)
+//    //{
+//    //    for (int j = 0; j < 29; j++)
+//    //    {
+//    //        columnValue += days[j][i];
+//    //    }
+//
+//    //    std::cout << "Column " << i << " has the sum of " << columnValue << std::endl;
+//    //    columnValue = 0;
+//    //}
+//
+//    
+//}
+
+//#include "Player.h"
+//#include <iostream>
+//int main()
+//{
+//	//Player player;
+//	//Player player2(30, 100, 20, 200, 20, 50, "Bill");
+//	Player p1(100, 100);  //a
+//	Player p2(25.f, 16.f); //b
+//	Player p3(p1); //c
+//	Player p4("Jerry"); //d
+//	Player p5; //e
+//}
+//
+//
+//
+//
+//
+//
+//#include <iostream>
+//
+//int main()
+//{
+//	const int NUMBERS_LENGTH = 5;
+//	int numbers[NUMBERS_LENGTH] = { 2, 4, 5, 8, 10 };
+//
+//
+//	std::cout << numbers << std::endl;
+//
+//	for (int iteration : numbers)
+//	{
+//		std::cout << " |" << iteration << "| ";
+//	}
+//
+//}
+//
+
+#include <iostream>
 int main()
 {
-    //3x3
-    int intArray[3][3];
+	char c = ' ';
+	int i = c;
 
-    for (int i = 0; i < 3; i++) //rows
-    {
-        for (int j = 0; j < 3; j++) //columns
-        {
-            intArray[i][j] = j + (i * 3) + 1;
-        }
-    }
-
-    for (int i = 0; i < 3; i++) //rows 
-    {
-        for (int j = 0; j < 3; j++) //columns
-        {
-            std::cout << "|" << intArray[i][j] << "|";
-        }
-        std::cout << std::endl;
-    }
-
-    //DAYS
-    int days[29][5];
-    
-    //fill values
-    for (int i = 0; i < 29; i++) //rows
-    {
-        for (int j = 0; j < 5; j++) //columns
-        {
-            days[i][j] = (std::rand() % 50) + 1; //Weighted random values of 1-50
-        }
-    }
-
-    //show values
-    for (int i = 0; i < 29; i++) //rows 
-    {
-        for (int j = 0; j < 5; j++) //columns
-        {
-            std::cout << "|" << days[i][j] << "|";
-        }
-        std::cout << std::endl;
-    }
-
-    int rowValue = 0;
-    //show row sums
-    for (int i = 0; i < 29; i++) //rows 
-    {
-        for (int j = 0; j < 5; j++) //columns
-        {
-            rowValue += days[i][j];
-        }
-        std::cout << "Row " << i << " has the sum of " << rowValue << std::endl;
-        rowValue = 0;
-    }
-
-    int columnValue = 0;
-    //show column sums
-    for (int i = 0; i < 5; i++)
-    {
-        for (int j = 0; j < 29; j++)
-        {
-            columnValue += days[j][i];
-        }
-
-        std::cout << "Column " << i << " has the sum of " << columnValue << std::endl;
-        columnValue = 0;
-    }
-
+	std::cout << "- value: " << i << std::endl;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Exercises on Arrays
 

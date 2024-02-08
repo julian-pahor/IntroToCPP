@@ -213,3 +213,8 @@ void String::WriteToConsole()
 {
 	std::cout << str << std::endl;
 }
+
+char& String::operator[](int index)
+{
+	return str[index];
+}
