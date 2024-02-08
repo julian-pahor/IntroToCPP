@@ -218,5 +218,3 @@ char& String::operator[](int index)
 {
 	return str[index];
 }
-
-

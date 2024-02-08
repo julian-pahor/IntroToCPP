@@ -33,7 +33,6 @@ public:
 
 	void WriteToConsole();
 
-public:
 	char& operator[](int index);
 
 private:
