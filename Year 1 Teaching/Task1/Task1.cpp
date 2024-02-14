@@ -81,7 +81,7 @@
 
 int main()
 {
-    String string = String("HelloWorld");
+    /*String string = String("HelloWorld");
 
     std::cout << "Character at Index should be o, Character = " << string.CharacterAt(4) << std::endl;
 
@@ -138,5 +138,26 @@ int main()
     {
         char thisChar = string3[i];
         std::cout << string3[i] << std::endl;
+    }*/
+
+
+   
+    String s1("Hello, ");
+    String s2("World!");
+
+    String s3 = s1 + s2;
+
+    String s4;
+
+    s4 = s1 + s2;
+
+    s4 = s1;
+
+
+    while (true)
+    {
+        s1 + s2;
     }
+
+    int i = 0;
 }

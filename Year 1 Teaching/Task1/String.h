@@ -4,10 +4,12 @@ class String
 {
 public:
 
+	String();
 	String(const char* string);
+	String(const String& other);
 	~String();
 
-	int Length();
+	int Length() const;
 
 	char CharacterAt(int index);
 
@@ -34,6 +36,13 @@ public:
 	void WriteToConsole();
 
 	char& operator[](int index);
+
+	public:
+		String operator+(const String& other) const;
+
+		String& operator=(const String& other);
+
+
 
 private:
 

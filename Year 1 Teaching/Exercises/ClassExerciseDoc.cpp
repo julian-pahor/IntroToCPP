@@ -421,11 +421,13 @@
 #include <iostream>
 int main()
 {
-	char c = ' ';
-	int i = c;
+    const int THISCONST = 5;
 
-	std::cout << "- value: " << i << std::endl;
-    
+    int* p = const_cast<int*>(&THISCONST);
+
+    *p = 10;
+
+    std::cout << THISCONST << std::endl;
 }
 
 

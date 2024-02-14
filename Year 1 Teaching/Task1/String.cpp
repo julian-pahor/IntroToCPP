@@ -1,6 +1,11 @@
 #include "String.h"
 #include <iostream>
 
+String::String()
+{
+	str = new char[5]{ "Hi" };
+}
+
 String::String(const char* string)
 {
 	str = new char[strlen(string) + 1]; //+1 for NUL
@@ -8,12 +13,19 @@ String::String(const char* string)
 	strcpy_s(str, strlen(string) + 1, string);
 }
 
+String::String(const String& other)
+{
+	str = new char[strlen(other.str) + 1];
+	strcpy_s(str, strlen(other.str) + 1, other.str);
+
+}
+
 String::~String()
 {
 	delete[] str;
 }
 
-int String::Length()
+int String::Length() const
 {
 	return strlen(str);
 }
@@ -217,4 +229,30 @@ void String::WriteToConsole()
 char& String::operator[](int index)
 {
 	return str[index];
+}
+
+String String::operator+(const String& other) const 
+{
+	// Concatenate the data of both instances
+	char* newData = new char[strlen(str) + strlen(other.str) + 1];
+	strcpy_s(newData, strlen(str) + strlen(other.str) + 1,  str);
+	strcat_s(newData, strlen(str) + strlen(other.str) + 1, other.str);
+
+	// Create a new instance with the concatenated data
+	String result(newData);
+
+	delete[] newData;
+
+	return result;
+}
+
+String& String::operator=(const String& other)
+{
+	delete[] str;
+
+	str = new char[strlen(other.str) + 1];
+
+	strcpy_s(str, strlen(other.str) + 1, other.str);
+
+	return *this;
 }
