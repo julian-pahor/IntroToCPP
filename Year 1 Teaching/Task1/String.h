@@ -27,6 +27,8 @@ public:
 
 	int Find(const char* findString);
 
+	int Find(const String& other);
+
 	int Find(int startIndex, const char* findString);
 
 	void Replace(const char* findString, const char* replaceString);
@@ -42,10 +44,8 @@ public:
 
 		String& operator=(const String& other);
 
-
-
 private:
-
+	bool CompareAt(int index, const char* findString);
 	char* str; 
 };
 

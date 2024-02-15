@@ -111,7 +111,7 @@ int String::Find(const char* findString)
 
 		for (int j = 0; j < searchLength; j++)
 		{
-			if (!(str[i + j] == findString[j]))
+			if (str[i + j] != findString[j])
 			{
 				found = false;
 			}
@@ -125,6 +125,82 @@ int String::Find(const char* findString)
 
 	return -1;
 }
+
+
+//
+//int String::Find(const char* findString)
+//{
+//	if (strlen(findString) > Length())
+//	{
+//		return -1;
+//	}
+//
+//	for (int i = 0; i < Length() - strlen(findString); i++)
+//	{
+//		if (CompareAt(i, findString))
+//		{
+//			return i;
+//		}
+//		else
+//		{
+//
+//		}
+//	}
+//
+//	return -1;
+//}
+
+int String::Find(const String& other)
+{
+	if (strlen(other.str) > Length())
+	{
+		return -1;
+	}
+
+	for (int i = 0; i < Length() - strlen(other.str); i++)
+	{
+		if (CompareAt(i, other.str))
+		{
+			return i;
+		}
+		else
+		{
+
+		}
+	}
+
+	return -1;
+}
+
+bool String::CompareAt(int index, const char* findString)
+{
+	for (int i = 0; i < strlen(findString); i++)
+	{
+		if (str[index + i] != findString[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int String::Find(int startIndex, const char* findString)
 {

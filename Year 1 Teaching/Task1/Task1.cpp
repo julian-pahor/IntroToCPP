@@ -145,19 +145,14 @@ int main()
     String s1("Hello, ");
     String s2("World!");
 
-    String s3 = s1 + s2;
+    String s3;
 
-    String s4;
-
-    s4 = s1 + s2;
-
-    s4 = s1;
-
+    s3 = s1 + s2;
 
     while (true)
     {
         s1 + s2;
     }
 
-    int i = 0;
+    String s4 = s1 + s2;
 }
