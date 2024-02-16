@@ -3,61 +3,52 @@
 
 #include <iostream>
 #include <raylib.h> 
+#include "Player.h"
 #include "raylib-cpp.hpp"
+#include "vector"
+#include "ActualPlayer.h"
+
+
 
 int main() {
-    int screenWidth = 800;
-    int screenHeight = 450;
+    int screenWidth = 1600;
+    int screenHeight = 900;
 
     raylib::Window window(screenWidth, screenHeight, "raylib-cpp - basic window");
 
     Camera2D cam = { 0 };
-    cam.zoom = 1.0f;
+    cam.zoom = 1.f;
+    std::vector<Object*> objects;
+    size_t objectCount = 1000;
 
-    //Sphere Variables
-    float sRadius = 100.f;
-    float sXPos = 0.f;
-    float sYPos = 0.f;
-    raylib::Color sColor = GOLD;
+    for (int i = 0; i < objectCount; i++)
+    {
+        Object* player = new Player(rand() % 50, LIGHTGRAY);
+        objects.push_back(player);
+    }
+
+    Object* actualPlayer = new ActualPlayer();
+    objects.push_back(actualPlayer);
 
     SetTargetFPS(60);
 
     while (!window.ShouldClose())
     {
-        if (IsKeyDown(KEY_W))
+        for (Object* o : objects)
         {
-            sYPos -= 1.f;
+            o->Update();
         }
-        if (IsKeyDown(KEY_S))
-        {
-            sYPos += 1.f;
-        }
-        if (IsKeyDown(KEY_A))
-        {
-            sXPos -= 1.f;
-        }
-        if (IsKeyDown(KEY_D))
-        {
-            sXPos += 1.f;
-        }
-
-        sRadius += GetMouseWheelMove() * -2.0f;
 
         BeginDrawing();
-
         window.ClearBackground(BLACK);
         BeginMode2D(cam);
 
-        DrawCircle(sXPos, sYPos, sRadius, sColor);
+        for (Object* o : objects)
+        {
+            o->Draw();
+        }
 
-
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
         EndMode2D();
-
-        //// Object methods.
-        //logo.Draw(
-        //    screenWidth / 2 - logo.GetWidth() / 2,
-        //    screenHeight / 2 - logo.GetHeight() / 2);
 
         EndDrawing();
     }

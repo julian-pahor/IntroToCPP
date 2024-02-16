@@ -79,6 +79,25 @@
 //    
 //}
 
+
+
+void PrintDateAndTime()
+{
+    struct tm newtime;
+    time_t now = time(0);
+    localtime_s(&newtime, &now);
+    int sec = newtime.tm_sec;
+    int minute = newtime.tm_min;
+    int hour = newtime.tm_hour;
+    int day = newtime.tm_mday;
+    int month = 1 + newtime.tm_mon;
+    int year = newtime.tm_year;
+
+    std::cout << "The time is: " << hour << ":" << minute << " and " << sec << " seconds..." << std::endl;
+    std::cout << "The date is: " << day << "/" << month << "/" << year  + 1900 << std::endl;
+
+}
+
 int main()
 {
     /*String string = String("HelloWorld");
@@ -142,17 +161,19 @@ int main()
 
 
    
-    String s1("Hello, ");
-    String s2("World!");
+    //String s1("Hello, ");
+    //String s2("World!");
 
-    String s3;
+    //String s3;
 
-    s3 = s1 + s2;
+    //s3 = s1 + s2;
 
-    while (true)
-    {
-        s1 + s2;
-    }
+    //while (true)
+    //{
+    //    s1 + s2;
+    //}
 
-    String s4 = s1 + s2;
+    //String s4 = s1 + s2;
+
+    PrintDateAndTime();
 }
