@@ -418,29 +418,45 @@
 //}
 //
 
-#include <iostream>
+//#include <iostream>
+//int main()
+//{
+//    const int THISCONST = 5;
+//
+//    int* p = const_cast<int*>(&THISCONST);
+//
+//    *p = 10;
+//
+//    std::cout << THISCONST << std::endl;
+//}
+//
+//
+//
+//
+
+
+
+#include <fstream>
+struct Data
+{
+	int health;
+	int attack;
+};
 int main()
 {
-    const int THISCONST = 5;
+	Data data;
+	data.health = 100;
+	data.attack = 15;
+	std::fstream file;
+	file.open("data.dat", std::ios::out | std::ios::binary);
+	file.write((char*)&data, sizeof(Data));
+	file.close();
+	file.open("textdata.txt", std::ios::out);
+	file << "Hello World!" << std::endl;
+	file.close();
 
-    int* p = const_cast<int*>(&THISCONST);
-
-    *p = 10;
-
-    std::cout << THISCONST << std::endl;
+	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
