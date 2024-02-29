@@ -10,6 +10,7 @@ public:
 
 	Room();
 	~Room();
+	void SetUpRoom(int i);
 	void Description() const;
 
 

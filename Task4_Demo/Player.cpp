@@ -2,10 +2,12 @@
 
 Player::Player()
 {
+
 }
 
 Player::~Player()
 {
+
 }
 
 bool Player::FindSpell(String& spell)

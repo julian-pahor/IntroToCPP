@@ -20,6 +20,12 @@ String::String(const String& other)
 
 }
 
+String::String(String&& other)
+{
+	str = other.str;
+	other.str = nullptr;
+}
+
 String::~String()
 {
 	delete[] str;
@@ -329,6 +335,15 @@ String& String::operator=(const String& other)
 	str = new char[strlen(other.str) + 1];
 
 	strcpy_s(str, strlen(other.str) + 1, other.str);
+
+	return *this;
+}
+
+String& String::operator=(String&& other)
+{
+	delete[] str;
+	str = other.str;
+	other.str = nullptr;
 
 	return *this;
 }

@@ -159,21 +159,58 @@ int main()
         std::cout << string3[i] << std::endl;
     }*/
 
+    String test("Hello");
 
-   
-    //String s1("Hello, ");
-    //String s2("World!");
+    std::cout << "Test Length: ";
 
-    //String s3;
+    if (test.Length() == 5)
+    {
+        //pass
+        std::cout << "Passed" << std::endl;
+    }
+    else
+    {
+        //fail
+        std::cout << "Failed" << std::endl;
+    }
+    String appendTest("Hello");
+    appendTest.Append(" World");
 
-    //s3 = s1 + s2;
+    std::cout << "Test Append: ";
 
-    //while (true)
+    if (strcmp(test.CStr(), "Hello World") == 0)
+    {
+        //pass
+        std::cout << "Passed" << std::endl;
+    }
+    else
+    {
+        //fail
+        std::cout << "Failed" << std::endl;
+    }
+    
+
+    //if (test.CharacterAt(3) == 'l')
     //{
-    //    s1 + s2;
+    //    //pass
+    //}
+    //else
+    //{
+    //    //fail
     //}
 
-    //String s4 = s1 + s2;
+    ////Ask user to input Hello World (exactly as written)
+
+    //if(strcmp(test.CStr(), "Hello World") == 0)
+    //{
+    //    //pass
+    //}
+    //else
+    //{
+    //    //fail
+    //}
+   
+
 
     PrintDateAndTime();
 }

@@ -7,7 +7,6 @@ public:
 	String();
 	String(const char* string);
 	String(const String& other);
-	String(String&& other);
 	~String();
 
 	int Length() const;
@@ -42,10 +41,8 @@ public:
 
 	public:
 		String operator+(const String& other) const;
-		String operator<(const String* other) const;
 
 		String& operator=(const String& other);
-		String& operator=(String&& other);
 
 private:
 	bool CompareAt(int index, const char* findString);
