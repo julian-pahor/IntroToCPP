@@ -2,6 +2,9 @@
 #include "Room.h"
 #include "Player.h"
 #include "String.h"
+#include "BoxOfDonuts.h"
+#include "Lamp.h"
+#include "Cat.h"
 #include <iostream>
 
 Game::Game()
@@ -49,6 +52,8 @@ void Game::Run()
 	//Run Logic on Input
 	//Affect Game Accordingly
 
+	rooms[posY][posX].Description();
+
 	std::cout << "What would you like to do? (move/use <item>/inspect <item>)" << std::endl;
 
 	userInput->ReadFromConsole();
@@ -62,19 +67,19 @@ void Game::Run()
 	case 'm':
 		if (userInput->Find("move") != -1)
 		{
-			if (userInput->Find("north") || userInput->Find("n"))
+			if (userInput->Find("north") != -1)
 			{
 				TryMove('n');
 			}
-			else if (userInput->Find("south") || userInput->Find("s"))
+			else if (userInput->Find("south") != -1)
 			{
 				TryMove('s');
 			}
-			else if (userInput->Find("east") || userInput->Find("e"))
+			else if (userInput->Find("east") != -1)
 			{
 				TryMove('e');
 			}
-			else if (userInput->Find("west") || userInput->Find("w"))
+			else if (userInput->Find("west") != -1)
 			{
 				TryMove('w');
 			}
@@ -87,23 +92,38 @@ void Game::Run()
 	case 'u':
 		if (userInput->Find("use") != -1)
 		{
-
+			if (userInput->Find("cat") != -1)
+			{
+				TryUse('c');
+			}
+			else if (userInput->Find("lamp") != -1)
+			{
+				TryUse('l');
+			}
+			else if (userInput->Find("box of donuts") != -1)
+			{
+				TryUse('b');
+			}
+			else
+			{
+				std::cout << "I couldn't figure out what you wanted to use..." << std::endl;
+			}
 		}
 		break;
 	case 'i':
 		if (userInput->Find("inspect") != -1)
 		{
-			if (userInput->Find("cat"))
+			if (userInput->Find("cat") != -1)
 			{
-				//if(rooms[posY][posX].)
+				TryInspect('c');
 			}
-			else if (userInput->Find("lamp"))
+			else if (userInput->Find("lamp") != -1)
 			{
-				
+				TryInspect('l');
 			}
-			else if (userInput->Find("box of donuts"))
+			else if (userInput->Find("box of donuts") != -1)
 			{
-				
+				TryInspect('b');
 			}
 			else
 			{
@@ -123,9 +143,32 @@ void Game::Run()
 
 void Game::Draw()
 {
-	//system("cls");
+	system("cls");
 
 	//Draw entire map system with player current room location
+	std::cout << "      ------------------------------------\n\n";
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			std::cout << "| ";
+			if (j == posX && i == posY)
+			{
+				std::cout << " P ";
+			}
+			else
+			{
+				std::cout << " O ";
+			}
+			std::cout << " |";
+		}
+
+		std::cout << std::endl;
+	}
+
+	std::cout << "\n      ------------------------------------\n\n";
+
 }
 
 void Game::SetPlayer(Player* p)
@@ -138,9 +181,9 @@ void Game::TryMove(char c)
 	switch (c)
 	{
 	case 'n':
-		if (posY <= 3)
+		if (posY >= 1)
 		{
-			posY++;
+			posY--;
 			std::cout << "You moved to the north-bound room ahead..." << std::endl;
 		}
 		else
@@ -149,9 +192,9 @@ void Game::TryMove(char c)
 		}
 		break;
 	case 's':
-		if (posY >= 1)
+		if (posY <= 3)
 		{
-			posY--;
+			posY++;
 			std::cout << "You moved to the south-bound room ahead..." << std::endl;
 		}
 		else
@@ -167,7 +210,7 @@ void Game::TryMove(char c)
 		}
 		else
 		{
-			std::cout << "There was no path you could find to the west..." << std::endl;
+			std::cout << "There was no path you could find to the east..." << std::endl;
 		}
 		break;
 	case 'w':
@@ -180,6 +223,104 @@ void Game::TryMove(char c)
 		{
 			std::cout << "There was no path you could find to the west..." << std::endl;
 		}
+		break;
+	}
+}
+
+void Game::TryUse(char c)
+{
+	switch (c)
+	{
+	case 'b':
+	{
+		BoxOfDonuts* bod = dynamic_cast<BoxOfDonuts*>(rooms[posY][posX].item);
+		if (bod != nullptr)
+		{
+			bod->Use();
+		}
+		else
+		{
+			std::cout << "There was nothing like that to use in the room..." << std::endl;
+		}
+		break;
+	}
+	case 'c':
+	{
+		Cat* cat = dynamic_cast<Cat*>(rooms[posY][posX].item);
+		if (cat != nullptr)
+		{
+			cat->Use();
+		}
+		else
+		{
+			std::cout << "There was nothing like that to use in the room..." << std::endl;
+		}
+		break;
+	}	
+	case 'l':
+	{
+		Lamp* lamp = dynamic_cast<Lamp*>(rooms[posY][posX].item);
+		if (lamp != nullptr)
+		{
+			lamp->Use();
+		}
+		else
+		{
+			std::cout << "There was nothing like that to use in the room..." << std::endl;
+		}
+		break;
+	}
+	default:
+		std::cout << "There was nothing in the room to use..." << std::endl;
+		break;
+	}
+}
+
+void Game::TryInspect(char c)
+{
+	switch (c)
+	{
+	case 'b':
+	{
+		BoxOfDonuts* bod = dynamic_cast<BoxOfDonuts*>(rooms[posY][posX].item);
+		if (bod != nullptr)
+		{
+			bod->Description();
+		}
+		else
+		{
+			std::cout << "There was nothing like that in the room..." << std::endl;
+		}
+		break;
+	}
+	case 'c':
+	{
+		Cat* cat = dynamic_cast<Cat*>(rooms[posY][posX].item);
+		if (cat != nullptr)
+		{
+			cat->Description();
+		}
+		else
+		{
+			std::cout << "There was nothing like that in the room..." << std::endl;
+		}
+		break;
+	}
+	case 'l':
+	{
+		Lamp* lamp = dynamic_cast<Lamp*>(rooms[posY][posX].item);
+		if (lamp != nullptr)
+		{
+			lamp->Description();
+		}
+		else
+		{
+			std::cout << "There was nothing like that in the room..." << std::endl;
+		}
+		break;
+	}
+	default:
+		std::cout << "There was nothing in the room to use..." << std::endl;
 		break;
 	}
 }

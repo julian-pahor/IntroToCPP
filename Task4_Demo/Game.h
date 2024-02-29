@@ -14,6 +14,8 @@ public:
 	void SetPlayer(Player* p);
 
 	void TryMove(char c);
+	void TryUse(char c);
+	void TryInspect(char c);
 
 private:
 	Room** rooms = nullptr;

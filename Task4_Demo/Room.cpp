@@ -37,6 +37,8 @@ void Room::SetUpRoom(int i)
 		this->m_description = new String("The room is completely barren");
 		break;
 	default:
+		this->item = nullptr;
+		this->m_description = new String("This room feels weird, we should leave quickly..");
 		break;
 	}
 	//i parameter used to set items in room
